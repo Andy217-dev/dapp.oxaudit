@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>OXAUDIT - Multi-chain Contract Scan</title>
+    
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="/css/vendors_css.css">
+	<!--amcharts -->
+	<link href="https://www.amcharts.com/lib/3/plugins/export/export.css" rel="stylesheet" type="text/css" /> 
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/skin_color.css">
+	<link rel="stylesheet" href="/css/custom37.css">
+     
+  </head>
+
+<body class="hold-transition dark-skin sidebar-mini hidden theme-warning fixed">
+	
+<div class="wrapper">
+	<div id="loader"></div>
+	
+  <header class="main-header bb-1">
+	<div class="d-flex align-items-center logo-box justify-content-start bx-1">	
+		<!-- Logo -->
+		<a href="/home" class="logo">
+		  <!-- logo-->
+		  <div class="logo-mini w-30">
+			  <span class="light-logo"><img src="/imgs/fav3.png" alt="logo"></span>
+			  <span class="dark-logo"><img src="/imgs/fav3.png" alt="logo"></span>
+		  </div>
+		  <div class="logo-lg">
+			<span class="light-logo"><img src="/imgs/eyesecu-dark-logo.png" alt="logo"></span>
+			<span class="dark-logo"><img src="/imgs/eyesecu-dark-logo.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <div class="app-menu">
+		<ul class="header-megamenu nav">
+			<li class="btn-group nav-item">
+				<a href="#" class="waves-effect waves-light nav-link push-btn btn-primary-light" data-toggle="push-menu" role="button" title="Menu">
+					<i data-feather="align-left"></i>
+			    </a>
+			</li>
+			
+		</ul> 
+	  </div>
+		
+      <div class="navbar-custom-menu r-side">
+        <ul class="nav navbar-nav">		  
+			<li class="btn-group d-lg-inline-flex d-none">
+				<div class="app-menu">
+					<div class="search-bx mx-5">
+						<form>
+							<div class="input-group">
+							  <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+							  <div class="input-group-append">
+								<button class="btn" type="submit" id="button-addon3"><i data-feather="search"></i></button>
+							  </div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</li>
+			<li class="btn-group nav-item d-lg-inline-flex d-none">
+				<a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen btn-primary-light" title="Full Screen">
+					<i data-feather="maximize"></i>
+			    </a>
+			</li>
+		  <!-- Notifications -->
+		 
+	      <!-- User Account-->
+        
+		  
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+              
+			  </a>
+          </li>
+			
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+      <div class="multinav">
+      <div class="multinav-scroll" style="height: 100%;">	
+        <!-- sidebar menu-->
+        <ul class="sidebar-menu" data-widget="tree">
+            
+          <!-- Dashboard -->
+          <li class="treeview">
+            <a href="#">
+              <i data-feather="monitor"></i>
+              <span>Dashboard</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="/home"><i class="icon-Commit"></i>Overview</a></li>
+              
+            </ul>
+          </li>
+          
+          <!-- Multi-Chain Checker -->
+          <li class="treeview">
+            <a href="#">
+              <i data-feather="layers"></i>
+              <span>Multi-Chain Checker</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="https://docs.oxaudit.com/tools/multi-chain-contract-scan"><i class="icon-Commit"></i>Documentation</a></li>
+              <li><a href="/multi-chain2"><i class="icon-Commit"></i>Cross-Chain Analysis</a></li>
+            </ul>
+          </li>
+  
+          <!-- Vulnerability AI Finder -->
+          <li>
+            <a href="/vulnerabfinder">
+              <i data-feather="search"></i>
+              <span>Vulnerability AI Finder</span>
+            </a>
+          </li>
+  
+         
+  
+          
+          <!-- API Access -->
+          <li>
+          <a href="/api_page">
+            <i data-feather="code"></i>
+              <span>API Access</span>
+            </a>
+          </li>
+  
+          <!-- Settings -->
+          
+  
+        </ul>      
+    
+          <!-- Copyright -->
+          <div class="copyright text-center m-25">
+          </div>
+          </div>
+        </div>
+    </section>
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Main content -->
+		<section class="content">
+			
+			<div class="row">
+				<div class="col-xl-8">
+					
+				</div>
+			
+			</div>
+			<div>
+				
+				<div class="row">
+					<div class="col-xxl-12 col-xl-6 col-12">
+					<br>
+						<div class="box b-1">
+								<br>
+								<br>
+								<h1 class="text-white font-weight-bold text-center">OXAUDIT AI Vulnerabilities Finder </h1>
+								<p class="text-white font-weight-normal text-center">Smart Contract scanner, protect your fund before invest in project
+								</p>
+						    <div class="card card-body blur shadow-blur mx-4 mt-6 overflow-hidden">
+								<div class="input-group">
+									<input type="text" id="contractAddress" class="form-control input-border-end-0"
+										placeholder="Enter contract address">
+										<select id="blockchainSelect" class="form-select border-start-0" aria-label="Select blockchain">
+											<option value="1" data-icon="./imgs/Ethereum-ETH-icon.png">ETHEREUM</option>
+											<option value="56" data-icon="../assets/img/OIP.jfif">BSC</option>
+											<option value="56" data-icon="../assets/img/solana.png">SOLANA <b>[Coming Soon]</b></option>
+											<option value="56" data-icon="../assets/img/baseicon.png">BASE <b>[Coming Soon]</b></option>
+											<option value="56" data-icon="../assets/img/tonicon.png">TON <b>[Coming Soon]</b></option>
+											<option value="56" data-icon="../assets/img/sui.png">SUI <b>[Coming Soon]</b></option>
+				
+										  </select>
+										  
+										  
+								</div>
+								<style>
+									#blockchainSelect {
+				  padding-left: 30px; /* Make space for the icon */
+				  background-position: 5px center;
+				  background-repeat: no-repeat;
+				}
+				.icon {
+				  width: 20px;
+				  height: 20px;
+				  margin-right: 8px;
+				  vertical-align: middle;
+				}
+				
+								</style>
+								<script>
+								   $(document).ready(function() {
+				  $('#blockchainSelect').select2({
+					templateResult: formatOption,
+					templateSelection: formatOption,
+					width: '100%' // Ensures it fits the container
+				  });
+				
+				  function formatOption(option) {
+					if (!option.id) {
+					  return option.text;
+					}
+					var $option = $(
+					  '<span><img src="' + $(option.element).data('icon') + '" class="icon" /> ' + option.text + '</span>'
+					);
+					return $option;
+				  }
+				});
+				
+								</script>
+								<button onclick="fetchTokenInfo()" class="btn btn-primary bg-warning rounded-lg mt-4">Scan
+									Contract</button>
+								<p id="loadingIndicator"></p>
+							</div>
+				
+				
+							<div id="highlightCard"></div>
+				
+							<!-- Security Details Card -->
+							<p id="tokenInfoDisplay"></p>
+							<div class="my-4">
+								<div id="securityDetails"></div>
+							</div>
+						</div>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <script>
+	function copyToClipboard(text) {
+    // Create a temporary input element to copy text to clipboard
+    const tempInput = document.createElement('input');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    // Display a success message
+    showCopiedToClipboardToast();
+    }
+    // Function to show Soft UI modal with custom message
+    function showComingSoonPopup(message) {
+    // Set the message content
+    if (message) {
+    document.getElementById('popupMessage').innerText = message;
+    }
+    // Show the modal
+    var modal = new bootstrap.Modal(document.getElementById('softUIModal'));
+    modal.show();
+    }
+    function showCopiedToClipboardToast() {
+    $('#copiedToClipBoard').toast('show')
+    setTimeout(function () {
+    $('#copiedToClipBoard').toast('hide');
+    }, 3000);
+    }
+
+
+    
+    // Rug Scanner
+ 
+    // Initial Chain Configuration
+let selectedChain = { name: 'Ethereum', id: '1', iconUrl: 'ethereum_icon.png' };
+
+// DOM Event Listeners
+document.getElementById('blockchainSelect').addEventListener('change', function (event) {
+    selectedChain.id = event.target.value;
+    selectedChain.name = event.target.options[event.target.selectedhome].text;
+});
+
+    let tokenInfo = null;
+    let loading = false;
+
+
+    document.getElementById('contractAddress').addEventListener('change', (event) => {
+    contractAddress = event.target.value;
+    });
+
+
+
+    function fetchTokenInfo() {
+    const contractAddress = document.getElementById('contractAddress').value;
+    if (!selectedChain || !contractAddress) {
+    console.error('Please select a chain and provide a contract address.');
+    return;
+    }
+    setLoading(true);
+    const apiUrl = `https://api.gopluslabs.io/api/v1/token_security/${selectedChain.id}?contract_addresses=${contractAddress}`;
+    fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+    console.log('API Response:', data);
+    tokenInfo = data.result[contractAddress.toLowerCase()] || null;
+    updateUI();
+    setLoading(false);
+    })
+    .catch(error => {
+    console.error('Failed to fetch token info:', error);
+    setLoading(false);
+    });
+    }
+    function updateUI() {
+    const infoDisplay = document.getElementById('tokenInfoDisplay');
+    const securityDetails = document.getElementById('securityDetails');
+    if (tokenInfo) {
+    // Display formatted information
+    const infoDisplayHTML = `
+    <div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h3 class="card-title">Contract Information</h3>
+                <h5 class = ><strong>Token Name:</strong> ${tokenInfo.token_name}</h5>
+                <h5><strong>Token Symbol:</strong> ${tokenInfo.token_symbol}</h5>
+                <h5><strong>Total Supply:</strong> ${tokenInfo.total_supply}</h5>
+                <h5><strong>Creation Date:</strong> </h5>
+                <h5><strong>Contract Creator:</strong> <a href="https://etherscan.com/address/${tokenInfo.creator_address}">${tokenInfo.creator_address}</a></h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h3 class="card-title">Market Information</h3>
+                <h5><strong>Market Cap:</strong> No Data</h5>
+                <h5><strong>Current Price:</strong> No Data</h5>
+                <h5><strong>Liquidity:</strong> No Data</h5>
+                <h5><strong>Price Change (24H):</strong> No Data</h5>
+                <h5><strong>Volume 24H:</strong> No Data</h5>
+            </div>
+        </div>
+    </div>
+</div>
+    `;
+    infoDisplay.innerHTML = infoDisplayHTML;
+    // Update the Security Overview section
+    const securityHTML = `
+    <div class="row">
+        <div class="col-md-6">
+            <h5 class="card-title mb-4">Security Details</h5>
+            <div class="d-flex flex-column gap-3">
+                <button class="d-flex justify-content-between align-items-center w-700 px-4 py-3 fw-bold text-start text-dark bg-white border-0 rounded shadow-none" type="button" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex justify-content-center align-items-center p-1 bg-${tokenInfo.can_take_back_ownership === '1' ? 'danger' : 'success'} rounded-circle" style="width: 28px; height: 28px;">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L20.2169 2.82598C20.6745 2.92766 21 3.33347 21 3.80217V13.7889C21 15.795 19.9974 17.6684 18.3282 18.7812L12 23L5.6718 18.7812C4.00261 17.6684 3 15.795 3 13.7889V3.80217C3 3.33347 3.32553 2.92766 3.78307 2.82598L12 1ZM12 3.04879L5 4.60434V13.7889C5 15.1263 5.6684 16.3752 6.7812 17.1171L12 20.5963L17.2188 17.1171C18.3316 16.3752 19 15.1263 19 13.7889V4.60434L12 3.04879ZM16.4524 8.22183L17.8666 9.63604L11.5026 16L7.25999 11.7574L8.67421 10.3431L11.5019 13.1709L16.4524 8.22183Z"></path>
+                        </svg>
+                    </div>
+                    <div class="fw-semibold">Can Takeback Ownership</div>
+                </div>
+                <div class="d-flex justify-content-end align-items-center gap-4">
+                    <div class="d-none d-md-block d-lg-block d-xl-block text-${tokenInfo.can_take_back_ownership === '1' ? 'danger' : 'success'}">${tokenInfo.can_take_back_ownership === '1' ? 'Detected' : 'Not Detected'}</div>
+                </div>
+                </button>
+                <button class="d-flex justify-content-between align-items-center w-700 px-4 py-3 fw-bold text-start text-dark bg-white border-0 rounded shadow-none" type="button" aria-expanded="false">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex justify-content-center align-items-center p-1 bg-${tokenInfo.is_open_source === '1' ? 'success' : 'danger'} rounded-circle" style="width: 28px; height: 28px;">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L20.2169 2.82598C20.6745 2.92766 21 3.33347 21 3.80217V13.7889C21 15.795 19.9974 17.6684 18.3282 18.7812L12 23L5.6718 18.7812C4.00261 17.6684 3 15.795 3 13.7889V3.80217C3 3.33347 3.32553 2.92766 3.78307 2.82598L12 1ZM12 3.04879L5 4.60434V13.7889C5 15.1263 5.6684 16.3752 6.7812 17.1171L12 20.5963L17.2188 17.1171C18.3316 16.3752 19 15.1263 19 13.7889V4.60434L12 3.04879ZM16.4524 8.22183L17.8666 9.63604L11.5026 16L7.25999 11.7574L8.67421 10.3431L11.5019 13.1709L16.4524 8.22183Z"></path>
+                            </svg>
+                        </div>
+                        <div class="fw-semibold">Open Source</div>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center gap-4">
+                        <div class="d-none d-md-block d-lg-block d-xl-block text-${tokenInfo.is_open_source === '1' ? 'success' : 'danger'}">${tokenInfo.is_open_source === '1' ? 'Verified' : 'Not Verified'}</div>
+                    </div>
+                </button>
+                <button class="d-flex justify-content-between align-items-center w-700 px-4 py-3 fw-bold text-start text-dark bg-white border-0 rounded shadow-none" type="button" aria-expanded="false">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex justify-content-center align-items-center p-1 bg-${tokenInfo.is_proxy === '1' ? 'danger' : 'success'} rounded-circle" style="width: 28px; height: 28px;">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L20.2169 2.82598C20.6745 2.92766 21 3.33347 21 3.80217V13.7889C21 15.795 19.9974 17.6684 18.3282 18.7812L12 23L5.6718 18.7812C4.00261 17.6684 3 15.795 3 13.7889V3.80217C3 3.33347 3.32553 2.92766 3.78307 2.82598L12 1ZM12 3.04879L5 4.60434V13.7889C5 15.1263 5.6684 16.3752 6.7812 17.1171L12 20.5963L17.2188 17.1171C18.3316 16.3752 19 15.1263 19 13.7889V4.60434L12 3.04879ZM16.4524 8.22183L17.8666 9.63604L11.5026 16L7.25999 11.7574L8.67421 10.3431L11.5019 13.1709L16.4524 8.22183Z"></path>
+                            </svg>
+                        </div>
+                        <div class="fw-semibold">Proxy Contract</div>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center gap-4">
+                        <div class="d-none d-md-block d-lg-block d-xl-block text-${tokenInfo.is_proxy === '1' ? 'danger' : 'success'}">${tokenInfo.is_proxy === '1' ? 'Detected' : 'Not Detected'}</div>
+                    </div>
+                </button>
+                <button class="d-flex justify-content-between align-items-center w-700 px-4 py-3 fw-bold text-start text-dark bg-white border-0 rounded shadow-none" type="button" aria-expanded="false">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex justify-content-center align-items-center p-1 bg-${tokenInfo.is_mintable === '1' ? 'danger' : 'success'} rounded-circle" style="width: 28px; height: 28px;">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L20.2169 2.82598C20.6745 2.92766 21 3.33347 21 3.80217V13.7889C21 15.795 19.9974 17.6684 18.3282 18.7812L12 23L5.6718 18.7812C4.00261 17.6684 3 15.795 3 13.7889V3.80217C3 3.33347 3.32553 2.92766 3.78307 2.82598L12 1ZM12 3.04879L5 4.60434V13.7889C5 15.1263 5.6684 16.3752 6.7812 17.1171L12 20.5963L17.2188 17.1171C18.3316 16.3752 19 15.1263 19 13.7889V4.60434L12 3.04879ZM16.4524 8.22183L17.8666 9.63604L11.5026 16L7.25999 11.7574L8.67421 10.3431L11.5019 13.1709L16.4524 8.22183Z"></path>
+                            </svg>
+                        </div>
+                        <div class="fw-semibold">Mint Function</div>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center gap-4">
+                        <div class="d-none d-md-block d-lg-block d-xl-block text-${tokenInfo.is_mintable === '1' ? 'danger' : 'success'}">${tokenInfo.is_mintable === '1' ? 'Detected' : 'Not Detected'}</div>
+                    </div>
+                </button>
+                <button class="d-flex justify-content-between align-items-center w-700 px-4 py-3 fw-bold text-start text-dark bg-white border-0 rounded shadow-none" type="button" aria-expanded="false">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex justify-content-center align-items-center p-1 bg-${tokenInfo.cannot_sell_all === '1' ? 'danger' : 'success'} rounded-circle" style="width: 28px; height: 28px;">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L20.2169 2.82598C20.6745 2.92766 21 3.33347 21 3.80217V13.7889C21 15.795 19.9974 17.6684 18.3282 18.7812L12 23L5.6718 18.7812C4.00261 17.6684 3 15.795 3 13.7889V3.80217C3 3.33347 3.32553 2.92766 3.78307 2.82598L12 1ZM12 3.04879L5 4.60434V13.7889C5 15.1263 5.6684 16.3752 6.7812 17.1171L12 20.5963L17.2188 17.1171C18.3316 16.3752 19 15.1263 19 13.7889V4.60434L12 3.04879ZM16.4524 8.22183L17.8666 9.63604L11.5026 16L7.25999 11.7574L8.67421 10.3431L11.5019 13.1709L16.4524 8.22183Z"></path>
+                            </svg>
+                        </div>
+                        <div class="fw-semibold">Cannot Sell All</div>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center gap-4">
+                        <div class="d-none d-md-block d-lg-block d-xl-block text-${tokenInfo.cannot_sell_all === '1' ? 'danger' : 'success'}">${tokenInfo.is_mintable === '1' ? 'Detected' : 'Not Detected'}</div>
+                    </div>
+                </button>
+                <button class="d-flex justify-content-between align-items-center w-700 px-4 py-3 fw-bold text-start text-dark bg-white border-0 rounded shadow-none" type="button" aria-expanded="false">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex justify-content-center align-items-center p-1 bg-${tokenInfo.is_honeypot === '1' ? 'danger' : 'success'} rounded-circle" style="width: 28px; height: 28px;">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L20.2169 2.82598C20.6745 2.92766 21 3.33347 21 3.80217V13.7889C21 15.795 19.9974 17.6684 18.3282 18.7812L12 23L5.6718 18.7812C4.00261 17.6684 3 15.795 3 13.7889V3.80217C3 3.33347 3.32553 2.92766 3.78307 2.82598L12 1ZM12 3.04879L5 4.60434V13.7889C5 15.1263 5.6684 16.3752 6.7812 17.1171L12 20.5963L17.2188 17.1171C18.3316 16.3752 19 15.1263 19 13.7889V4.60434L12 3.04879ZM16.4524 8.22183L17.8666 9.63604L11.5026 16L7.25999 11.7574L8.67421 10.3431L11.5019 13.1709L16.4524 8.22183Z"></path>
+                            </svg>
+                        </div>
+                        <div class="fw-semibold">Is Honeypot</div>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center gap-4">
+                        <div class="d-none d-md-block d-lg-block d-xl-block text-${tokenInfo.is_honeypot === '1' ? 'danger' : 'success'}">${tokenInfo.is_mintable === '1' ? 'Detected' : 'Not Detected'}</div>
+                    </div>
+                </button>
+                <button class="d-flex justify-content-between align-items-center w-700 px-4 py-3 fw-bold text-start text-dark bg-white border-0 rounded shadow-none" type="button" aria-expanded="false">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex justify-content-center align-items-center p-1 bg-${tokenInfo.is_blacklisted === '1' ? 'danger' : 'success'} rounded-circle" style="width: 28px; height: 28px;">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L20.2169 2.82598C20.6745 2.92766 21 3.33347 21 3.80217V13.7889C21 15.795 19.9974 17.6684 18.3282 18.7812L12 23L5.6718 18.7812C4.00261 17.6684 3 15.795 3 13.7889V3.80217C3 3.33347 3.32553 2.92766 3.78307 2.82598L12 1ZM12 3.04879L5 4.60434V13.7889C5 15.1263 5.6684 16.3752 6.7812 17.1171L12 20.5963L17.2188 17.1171C18.3316 16.3752 19 15.1263 19 13.7889V4.60434L12 3.04879ZM16.4524 8.22183L17.8666 9.63604L11.5026 16L7.25999 11.7574L8.67421 10.3431L11.5019 13.1709L16.4524 8.22183Z"></path>
+                            </svg>
+                        </div>
+                        <div class="fw-semibold">Blacklist Function</div>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center gap-4">
+                        <div class="d-none d-md-block d-lg-block d-xl-block text-${tokenInfo.is_blacklisted === '1' ? 'danger' : 'success'}">${tokenInfo.is_mintable === '1' ? 'Detected' : 'Not Detected'}</div>
+                    </div>
+                </button>
+                <button class="d-flex justify-content-between align-items-center w-700 px-4 py-3 fw-bold text-start text-dark bg-white border-0 rounded shadow-none" type="button" aria-expanded="false">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex justify-content-center align-items-center p-1 bg-${tokenInfo.is_whitelisted === '1' ? 'danger' : 'success'} rounded-circle" style="width: 28px; height: 28px;">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L20.2169 2.82598C20.6745 2.92766 21 3.33347 21 3.80217V13.7889C21 15.795 19.9974 17.6684 18.3282 18.7812L12 23L5.6718 18.7812C4.00261 17.6684 3 15.795 3 13.7889V3.80217C3 3.33347 3.32553 2.92766 3.78307 2.82598L12 1ZM12 3.04879L5 4.60434V13.7889C5 15.1263 5.6684 16.3752 6.7812 17.1171L12 20.5963L17.2188 17.1171C18.3316 16.3752 19 15.1263 19 13.7889V4.60434L12 3.04879ZM16.4524 8.22183L17.8666 9.63604L11.5026 16L7.25999 11.7574L8.67421 10.3431L11.5019 13.1709L16.4524 8.22183Z"></path>
+                            </svg>
+                        </div>
+                        <div class="fw-semibold">Whitelist Function</div>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center gap-4">
+                        <div class="d-none d-md-block d-lg-block d-xl-block text-${tokenInfo.is_whitelisted === '1' ?  'danger' : 'success' }">${tokenInfo.is_whitelisted === '1' ? 'Detected' : 'Not Detected'}</div>
+                    </div>
+                </button>
+                <button class="d-flex justify-content-between align-items-center w-700 px-4 py-3 fw-bold text-start text-dark bg-white border-0 rounded shadow-none" type="button" aria-expanded="false">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex justify-content-center align-items-center p-1 bg-${tokenInfo.hidden_owner === '1' ? 'danger' : 'success'} rounded-circle" style="width: 28px; height: 28px;">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L20.2169 2.82598C20.6745 2.92766 21 3.33347 21 3.80217V13.7889C21 15.795 19.9974 17.6684 18.3282 18.7812L12 23L5.6718 18.7812C4.00261 17.6684 3 15.795 3 13.7889V3.80217C3 3.33347 3.32553 2.92766 3.78307 2.82598L12 1ZM12 3.04879L5 4.60434V13.7889C5 15.1263 5.6684 16.3752 6.7812 17.1171L12 20.5963L17.2188 17.1171C18.3316 16.3752 19 15.1263 19 13.7889V4.60434L12 3.04879ZM16.4524 8.22183L17.8666 9.63604L11.5026 16L7.25999 11.7574L8.67421 10.3431L11.5019 13.1709L16.4524 8.22183Z"></path>
+                            </svg>
+                        </div>
+                        <div class="fw-semibold">Hidden Owner</div>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center gap-4">
+                        <div class="d-none d-md-block d-lg-block d-xl-block text-${tokenInfo.hidden_owner === '1' ? 'danger' : 'success'}">${tokenInfo.is_mintable === '1' ? 'Detected' : 'Not Detected'}</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Top Holders</h5>
+                    <ul class="list-group">
+                    ${tokenInfo.holders.slice(0, 5).map(holder => `
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h5>${holder.address.substring(0, 5)}...${holder.address.slice(-5)} (${(holder.percent * 100).toFixed(2)}%)</h5>
+                        <div class="progress" style="width: 100%;">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: ${holder.percent * 100}%" aria-valuenow="${holder.percent * 100}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </li>
+                    `).join('')}
+                    ${tokenInfo.holders.slice(-5).map(holder => `
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h5>${holder.address.substring(0, 5)}...${holder.address.slice(-5)} (${(holder.percent * 100).toFixed(2)}%)</h5>
+                        <div class="progress" style="width: 100%;">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: ${holder.percent * 100}%" aria-valuenow="${holder.percent * 100}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </li>
+                    `).join('')}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+    securityDetails.innerHTML = securityHTML;
+    // Render the Highlight Card
+    renderHighlightCard(tokenInfo);
+    } else {
+    infoDisplay.textContent = 'Token information is not available.';
+    securityDetails.innerHTML = '';
+    }
+    }
+    function renderHighlightCard(tokenInfo) {
+    const highlightCard = document.getElementById('highlightCard');
+    highlightCard.innerHTML = `
+    <div class="my-6">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mx-4">
+        <div class="col p-3 text-dark bg-white border border-radius-lg rounded-md shadow">
+            <div class="d-flex align-items-center gap-3">
+                <div class="d-flex justify-content-center align-items-center p-3 text-white ${tokenInfo.buy_tax >= 0 ? 'bg-success' : 'bg-danger'} rounded-circle">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5049 21.0029C15.5719 21.0029 14.0049 19.4359 14.0049 17.5029C14.0049 15.5699 15.5719 14.0029 17.5049 14.0029C19.4379 14.0029 21.0049 15.5699 21.0049 17.5029C21.0049 19.4359 19.4379 21.0029 17.5049 21.0029ZM17.5049 19.0029C18.3333 19.0029 19.0049 18.3314 19.0049 17.5029C19.0049 16.6745 18.3333 16.0029 17.5049 16.0029C16.6765 16.0029 16.0049 16.6745 16.0049 17.5029C16.0049 18.3314 16.6765 19.0029 17.5049 19.0029ZM6.50488 10.0029C4.57189 10.0029 3.00488 8.43593 3.00488 6.50293C3.00488 4.56993 4.57189 3.00293 6.50488 3.00293C8.43788 3.00293 10.0049 4.56993 10.0049 6.50293C10.0049 8.43593 8.43788 10.0029 6.50488 10.0029ZM6.50488 8.00293C7.33331 8.00293 8.00488 7.33136 8.00488 6.50293C8.00488 5.6745 7.33331 5.00293 6.50488 5.00293C5.67646 5.00293 5.00488 5.6745 5.00488 6.50293C5.00488 7.33136 5.67646 8.00293 6.50488 8.00293ZM19.076 3.51765L20.4902 4.93186L4.93382 20.4882L3.5196 19.074L19.076 3.51765Z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-weight-bold">Buy Fees</span>
+                    <div class="${tokenInfo.buy_tax >= 0 ? 'text-success' : 'text-danger'}">
+                        ${tokenInfo.buy_tax * 100}%
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col p-3 text-dark bg-white border border-radius-lg rounded-md shadow">
+            <div class="d-flex align-items-center gap-3">
+                <div class="d-flex justify-content-center align-items-center p-3 text-white bg-danger rounded-circle">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5049 21.0029C15.5719 21.0029 14.0049 19.4359 14.0049 17.5029C14.0049 15.5699 15.5719 14.0029 17.5049 14.0029C19.4379 14.0029 21.0049 15.5699 21.0049 17.5029C21.0049 19.4359 19.4379 21.0029 17.5049 21.0029ZM17.5049 19.0029C18.3333 19.0029 19.0049 18.3314 19.0049 17.5029C19.0049 16.6745 18.3333 16.0029 17.5049 16.0029C16.6765 16.0029 16.0049 16.6745 16.0049 17.5029C16.0049 18.3314 16.6765 19.0029 17.5049 19.0029ZM6.50488 10.0029C4.57189 10.0029 3.00488 8.43593 3.00488 6.50293C3.00488 4.56993 4.57189 3.00293 6.50488 3.00293C8.43788 3.00293 10.0049 4.56993 10.0049 6.50293C10.0049 8.43593 8.43788 10.0029 6.50488 10.0029ZM6.50488 8.00293C7.33331 8.00293 8.00488 7.33136 8.00488 6.50293C8.00488 5.6745 7.33331 5.00293 6.50488 5.00293C5.67646 5.00293 5.00488 5.6745 5.00488 6.50293C5.00488 7.33136 5.67646 8.00293 6.50488 8.00293ZM19.076 3.51765L20.4902 4.93186L4.93382 20.4882L3.5196 19.074L19.076 3.51765Z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-weight-bold">Sell Fees</span>
+                    <div class="${tokenInfo.sell_tax >= 0 ? 'text-success' : 'text-danger'}">
+                        ${tokenInfo.sell_tax * 100}%
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col p-3 text-dark bg-white border rounded-md border-radius-lg shadow">
+            <div class="d-flex align-items-center gap-3">
+                <div class="d-flex justify-content-center align-items-center p-3 bg-warning rounded-circle">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5049 21.0029C15.5719 21.0029 14.0049 19.4359 14.0049 17.5029C14.0049 15.5699 15.5719 14.0029 17.5049 14.0029C19.4379 14.0029 21.0049 15.5699 21.0049 17.5029C21.0049 19.4359 19.4379 21.0029 17.5049 21.0029ZM17.5049 19.0029C18.3333 19.0029 19.0049 18.3314 19.0049 17.5029C19.0049 16.6745 18.3333 16.0029 17.5049 16.0029C16.6765 16.0029 16.0049 16.6745 16.0049 17.5029C16.0049 18.3314 16.6765 19.0029 17.5049 19.0029ZM6.50488 10.0029C4.57189 10.0029 3.00488 8.43593 3.00488 6.50293C3.00488 4.56993 4.57189 3.00293 6.50488 3.00293C8.43788 3.00293 10.0049 4.56993 10.0049 6.50293C10.0049 8.43593 8.43788 10.0029 6.50488 10.0029ZM6.50488 8.00293C7.33331 8.00293 8.00488 7.33136 8.00488 6.50293C8.00488 5.6745 7.33331 5.00293 6.50488 5.00293C5.67646 5.00293 5.00488 5.6745 5.00488 6.50293C5.00488 7.33136 5.67646 8.00293 6.50488 8.00293ZM19.076 3.51765L20.4902 4.93186L4.93382 20.4882L3.5196 19.074L19.076 3.51765Z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-weight-bold">Transfer fees</span>
+                    <div class="text-yellow">
+                        0.00%
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col p-3 text-dark bg-white border border-radius-lg rounded-md shadow">
+            <div class="d-flex align-items-center gap-3">
+                <div class="d-flex justify-content-center align-items-center p-3 text-white ${tokenInfo.is_open_source === '1' ? 'bg-success' : 'bg-danger'} rounded-circle">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="text-white" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"></svg>
+                </div>
+                <div>
+                    <span class="font-weight-bold">Open Source</span>
+                    <div class="${tokenInfo.is_open_source === '1' ? 'text-success' : 'text-danger'}">
+                        ${tokenInfo.is_open_source === '1' ? 'Verified' : 'NOT Verified'}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    `;
+    }
+    function setLoading(isLoading) {
+    loading = isLoading;
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    loadingIndicator.textContent = loading ? 'Loading...' : '';
+    }
+  </script>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer bt-1">
+    <div class="pull-right d-none d-sm-inline-block">
+        <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+		  
+		</ul>
+    </div>
+	  &copy; 2025 <a href="https://www.multipurposethemes.com/">OXAUDIT </a>. All Rights Reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar">
+	  
+		<div class="rpanel-title"><span class="pull-right btn btn-circle btn-danger" data-toggle="control-sidebar"><i class="ion ion-close text-white" ></i></span> </div>  <!-- Create the tabs -->
+  
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane" id="control-sidebar-home-tab">
+          <div class="flexbox">
+			<a href="javascript:void(0)" class="text-grey">
+				<i class="ti-more"></i>
+			</a>	
+			<p>Users</p>
+			<a href="javascript:void(0)" class="text-end text-grey"><i class="ti-plus"></i></a>
+		  </div>
+		  <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+			<input type="text" name="s" placeholder="Search" class="w-p100">
+		  </div>
+          <div class="media-list media-list-hover mt-20">
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-primary" href="#">
+				<img src="../images/avatar/4.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>			
+			
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+			  
+		  </div>
+
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+     
+        
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  
+</div>
+<div id="chat-box-body">
+  <div id="chat-circle" class="waves-effect waves-circle btn btn-circle btn-lg btn-primary l-h-70">
+    <div id="chat-overlay"></div>
+    <span class="icon-Group-chat fs-30"><span class="path1"></span><span class="path2"></span></span>
+  </div>
+
+  <div class="chat-box">
+    <div class="chat-box-header p-15 d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <div class="dropdown-menu min-w-200">
+          <a class="dropdown-item fs-16" href="#">
+            <span class="icon-Color me-15"></span>
+            New Group
+          </a>
+          <a class="dropdown-item fs-16" href="#">
+            <span class="icon-Clipboard me-15"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></span>
+            Contacts
+          </a>
+          <a class="dropdown-item fs-16" href="#">
+            <span class="icon-Group me-15"><span class="path1"></span><span class="path2"></span></span>
+            Groups
+          </a>
+          <a class="dropdown-item fs-16" href="#">
+            <span class="icon-Active-call me-15"><span class="path1"></span><span class="path2"></span></span>
+            Calls
+          </a>
+          <a class="dropdown-item fs-16" href="#">
+            <span class="icon-Settings1 me-15"><span class="path1"></span><span class="path2"></span></span>
+            Settings
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item fs-16" href="#">
+            <span class="icon-Question-circle me-15"><span class="path1"></span><span class="path2"></span></span>
+            Help
+          </a>
+          <a class="dropdown-item fs-16" href="#">
+            <span class="icon-Notifications me-15"><span class="path1"></span><span class="path2"></span></span> 
+            Privacy
+          </a>
+        </div>
+      </div>
+      <div class="text-center flex-grow-1">
+        <div class="text-dark fs-18">OXAUDIT BOT</div>
+        <div>
+          <span class="badge badge-sm badge-dot badge-primary"></span>
+          <span class="text-muted fs-12">Active</span>
+        </div>
+      </div>
+      <div class="chat-box-toggle">
+        <button id="chat-box-toggle" class="waves-effect waves-circle btn btn-circle btn-danger-light h-40 w-40 rounded-circle l-h-45" type="button">
+          <span class="icon-Close fs-22"><span class="path1"></span><span class="path2"></span></span>
+        </button>                    
+      </div>
+    </div>
+    <div class="chat-box-body">
+      <div class="chat-box-overlay"></div>
+      <div class="chat-logs">
+        <!-- Existing messages are optional. You can remove these if you want a clean start.
+        <div class="chat-msg user">
+          <div class="d-flex align-items-center">
+            <span class="msg-avatar">
+              <img src="../images/trophy.png" class="avatar avatar-lg">
+            </span>
+            <div class="mx-10">
+              <a href="#" class="text-dark hover-primary fw-bold">OXAUDIT BOT</a>
+              <p class="text-muted fs-12 mb-0">2 Hours</p>
+            </div>
+          </div>
+          <div class="cm-msg-text">
+            Hi there, I'm Jesse and you?
+          </div>
+        </div>
+        <div class="chat-msg self">
+          <div class="d-flex align-items-center justify-content-end">
+            <div class="mx-10">
+              <a href="#" class="text-dark hover-primary fw-bold">You</a>
+              <p class="text-muted fs-12 mb-0">3 minutes</p>
+            </div>
+            <span class="msg-avatar">
+              <img src="../images/avatar/3.jpg" class="avatar avatar-lg">
+            </span>
+          </div>
+          <div class="cm-msg-text">
+            My name is Anne Clarc.         
+          </div>        
+        </div>
+        <div class="chat-msg user">
+          <div class="d-flex align-items-center">
+            <span class="msg-avatar">
+              <img src="../images/avatar/2.jpg" class="avatar avatar-lg">
+            </span>
+            <div class="mx-10">
+              <a href="#" class="text-dark hover-primary fw-bold">OXAUDIT BOT</a>
+              <p class="text-muted fs-12 mb-0">40 seconds</p>
+            </div>
+          </div>
+          <div class="cm-msg-text">
+            Nice to meet you Anne.<br>How can I help you?
+          </div>
+        </div>
+        -->
+      </div><!-- /.chat-logs -->
+    </div>
+    <div class="chat-input">      
+      <form id="chat-form">
+        <input type="text" id="chat-input" placeholder="Send a message..."/>
+        <button type="submit" class="chat-submit" id="chat-submit">
+          <span class="icon-Send fs-22"></span>
+        </button>
+      </form>      
+    </div>
+  </div>
+</div>
+
+<!-- Page Content overlay -->
+<script>
+  // Your OpenAI API key and project context
+      const apiKey = "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"; // Replace with your OpenAI API key
+  const projectContext = `
+    You are OXAudit Bot, an expert in blockchain security.
+    Your role is to assist users with questions about OXAudit services.
+    Be professional, concise, and helpful. If you can't help someone, then refer them to the telegram: 'https://t.me/Ethan00XX'
+  `;
+
+  const chatForm = document.getElementById("chat-form");
+  const chatLogs = document.querySelector(".chat-logs");
+
+  chatForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const inputField = document.getElementById("chat-input");
+    const message = inputField.value.trim();
+
+    if (!message) return;
+
+    // Display user's message
+    addChatMessage("self", "You", message);
+    inputField.value = "";
+
+    // Fetch AI's response
+    const aiResponse = await getAIResponse(message);
+
+    // Display AI's response
+    addChatMessage("user", "OXAUDIT BOT", aiResponse);
+  });
+
+  function addChatMessage(type, sender, text) {
+  const timeStamp = "Now"; // You can replace this with a dynamic timestamp if desired
+
+  // We assume that when `type` is "user", it's the bot sending a message.
+  // For the bot (user), we'll show an avatar on the left.
+  // For the user (self), we can keep the message as is or also add an avatar if desired.
+  let avatarHTML = "";
+  if (type === "user") {
+      // Bot message (avatar on the left)
+      avatarHTML = `
+          <span class="msg-avatar">
+              <img src="../images/trophy.png" class="avatar avatar-lg" alt="Bot Avatar">
+          </span>
+      `;
+  }
+
+  const messageHTML = `
+      <div class="chat-msg ${type}">
+          <div class="d-flex align-items-center">
+              ${type === "user" ? avatarHTML : ""}
+              <div class="mx-10">
+                  <a href="#" class="text-dark hover-primary fw-bold">${sender}</a>
+                  <p class="text-muted fs-12 mb-0">${timeStamp}</p>
+              </div>
+          </div>
+          <div class="cm-msg-text">${text}</div>
+      </div>
+  `;
+
+  chatLogs.innerHTML += messageHTML;
+  chatLogs.scrollTop = chatLogs.scrollHeight; // Auto-scroll to latest message
+}
+
+  async function getAIResponse(userMessage) {
+    try {
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: "gpt-4",
+          messages: [
+            { role: "system", content: projectContext },
+            { role: "user", content: userMessage },
+          ],
+        }),
+      });
+
+      const data = await response.json();
+      return data.choices[0].message.content;
+    } catch (error) {
+      console.error("Error fetching AI response:", error);
+      return "Sorry, I couldn't process your request.";
+    }
+  }
+</script>
+
+<!-- ./wrapper -->
+	
+	<!-- ./side demo panel -->
+	
+	<!-- Sidebar -->
+		
+
+	<!-- Page Content overlay -->
+	
+	
+	<!-- Vendor JS -->
+		<!-- Vendor JS -->
+	<script src="/js/vendors.min.js"></script>
+	<script src="/js/demo.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	
+	<script src="../assets/vendor_components/Web-Ticker-master/jquery.webticker.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"></script>
+	<script src="https://fastly.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+	<script src="../assets/vendor_components/OwlCarousel2/dist/owl.carousel.js"></script>
+	<script src="../assets/vendor_components/jquery-knob/js/jquery.knob.js"></script>
+	
+	<!-- Crypto Admin App -->
+	<script src="/js/template.js"></script>
+	<script src="/js/pages/dashboard37.js"></script>
+	<script src="/js/pages/dashboard37-chart.js"></script>
+
+	
+</body>
+</html>
